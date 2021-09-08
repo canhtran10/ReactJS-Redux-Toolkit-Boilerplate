@@ -4,8 +4,22 @@ import { Header } from 'app/components/Header';
 import { PageWrapper } from 'app/components/PageWrapper';
 import 'styles/pages/home.scss';
 import { Demo } from "./components/Demo";
+import {Redirect, Link} from "react-router-dom";
 
 export function HomePage() {
+
+  const redirectToCheckoutPage = () => {
+    console.log('Click');
+    return <Redirect to={'/checkout'}/>;
+    return <Redirect
+      to={{
+        pathname: "/checkout",
+        search: "?utm=your+face",
+        state: { referrer: "" }
+      }}
+    />
+  }
+
   return (
     <>
       <Helmet>
@@ -22,6 +36,11 @@ export function HomePage() {
             <h1>Home Page</h1>
 
             <Demo />
+
+            <Link to="/checkout">Checkout</Link>
+
+            <Link to="/dashboard">Dashboard</Link>
+
           </div>
         </div>
       </PageWrapper>
